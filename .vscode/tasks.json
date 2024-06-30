@@ -6,17 +6,20 @@
         {
             "label": "cmake clean",
             "type": "shell",
+            "group": "build",
             "command": "cmake --build ${command:cmake.buildDirectory} --config Debug --target clean"
         },
         {
             "label": "cmake build",
             "type": "shell",
+            "group": "build",
             "command": "cmake --build ${command:cmake.buildDirectory} --config Debug --target all",
             "problemMatcher": "$gcc"
         },
         {
             "label": "cmake remove build",
             "type": "shell",
+            "group": "build",
             "command": "rm -fr ${command:cmake.buildDirectory}"
         },
         {
@@ -37,6 +40,7 @@
                 "-f${workspaceFolder}/wch/wch-riscv.cfg",
                 "-f${workspaceFolder}/wch/wch-program.cfg"
             ],
+            "group": "build",
             "dependsOn": "cmake build"
         },
         {
@@ -55,6 +59,7 @@
         },
         {
             "label": "rebuild",
+            "group": "build",
             "dependsOrder": "sequence",
             "dependsOn": [
                 "cmake clean",

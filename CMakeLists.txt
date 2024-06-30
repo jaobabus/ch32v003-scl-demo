@@ -4,13 +4,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(firmware)
 set(TARGET_ELF ${PROJECT_NAME}.elf)
-add_executable(${TARGET_ELF} src/main.c)
+add_executable(${TARGET_ELF} src/main.cpp src/cli.cpp)
 enable_language(C CXX ASM)
 target_compile_features(${TARGET_ELF} PRIVATE cxx_std_17)
 
 add_subdirectory(wch)
+add_subdirectory(scl)
 
-target_link_libraries(${TARGET_ELF} m)
+target_link_libraries(${TARGET_ELF} m scl)
 
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/romfs.c
